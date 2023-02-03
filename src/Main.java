@@ -6,24 +6,36 @@ public class Main {
         System.out.println(" ");
 
 
-        int check =(int)((Math.random()*10)%3);
+        final int isPresent = 1;
+        final int isAbsent = 0;
+        final int isPartTime =2;
+        int dailyWage = 20;
+        int dailyWorkHour;
+        int dailySalary;
+        int return_value = 0;
+        int checkAttendance =(int)((Math.random()*10)%3);
 
-        int daily_wage_per_hour= 20;
-        int emp_hour=8;
-        int emp_part_hour=5;
-
-        if (check == 1){
-            int salary = emp_hour*daily_wage_per_hour;
-            System.out.println("The Employee is Present and the Salary is:" + salary);
+        switch(checkAttendance){
+            case isPresent: {
+                System.out.println("The Employee is Present");
+                dailyWorkHour = 8;
+                return_value=dailyWorkHour;
+                break;
+            }
+            case isPartTime: {
+                System.out.println("The Employee is Present But Part Time..");
+                dailyWorkHour = 5;
+                return_value=dailyWorkHour;
+                break;
+            }
+            default: {
+                System.out.println("The Employee is Absent");
+                dailyWorkHour=0;
+                return_value=dailyWorkHour;
+                break;
+            }
         }
-        else if (check == 2){
-            int salary = emp_part_hour*daily_wage_per_hour;
-            System.out.println("The Employee is Present But Part Time and The Salary is:" + salary);
-        }
-        else{
-            int salary=0;
-            System.out.println("The Employee is Absent and The Salary is: " + salary);
-        }
-
+        dailySalary = dailyWage * return_value;
+        System.out.println("Daily Salary is ="+dailySalary);
     }
 }
