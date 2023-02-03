@@ -5,22 +5,36 @@ public class Main {
         System.out.println("............................................");
         System.out.println(" ");
 
-        int isPresent = 1;
-        int isAbsent = 0;
+        final int isPresent = 1;
+        final int isAbsent = 0; //not used
+        final int isPartTime =2;
         int dailyWage = 20;
         int dailyWorkHour;
         int dailySalary;
-        int checkAttendance =(int)((Math.random()*10)%2);
+        int return_value = 0;
+        int checkAttendance =(int)((Math.random()*10)%3);
 
-        if (checkAttendance == isPresent){
-            System.out.println("The Employee is Present");
-            dailyWorkHour=8;
+        switch(checkAttendance){
+            case isPresent: {
+                System.out.println("The Employee is Present");
+                dailyWorkHour = 8;
+                return_value=dailyWorkHour;
+                break;
+            }
+            case isPartTime: {
+                System.out.println("The Employee is Present But Part Time..");
+                dailyWorkHour = 5;
+                return_value=dailyWorkHour;
+                break;
+            }
+            default: {
+                System.out.println("The Employee is Absent");
+                dailyWorkHour=0;
+                return_value=dailyWorkHour;
+                break;
+            }
         }
-        else{
-            System.out.println("The Employee is Absent");
-            dailyWorkHour=0;
-        }
-        dailySalary = dailyWage * dailyWorkHour;
+        dailySalary = dailyWage * return_value;
         System.out.println("Daily Salary is ="+dailySalary);
 
         }
