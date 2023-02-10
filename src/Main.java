@@ -1,17 +1,17 @@
 public class Main {
-    public static void main(String[] args) {
 
+    public static final int isPresent = 1;
+    //public static final int isAbsent = 0;
+    public static final int isPartTime = 2;
+    public static final int daily_wage_per_hour = 100;
+    public static  final int max_hour_in_month = 100;
+    public static final int working_day = 20;
+
+    public void employeeWageCalculation(){
         System.out.println("Welcome To Employee Wage Computation Program");
         System.out.println("............................................");
         System.out.println(" ");
 
-        final int isPresent = 1;
-        final int isAbsent = 0;
-        final int isPartTime =2;
-
-        int daily_wage_per_hour = 100;
-        int max_hour_in_month=100;
-        int working_day = 20;
         //while loop vars
         int Total_salary=0;
         int total_working_hr=0;
@@ -20,6 +20,7 @@ public class Main {
         int dailySalary;
 
         while (total_emp_hr <= max_hour_in_month && total_working_days < working_day){
+
             int return_value;
             int checkAttendance =(int)((Math.random()*10)%3);
             switch(checkAttendance){
@@ -41,7 +42,9 @@ public class Main {
             }
             total_emp_hr=total_emp_hr+return_value;
 
-            /*if(total_emp_hr>max_hour_in_month){
+            /*
+
+                if(total_emp_hr>max_hour_in_month){
                 total_emp_hr=total_emp_hr-return_value;
                 break;
             }
@@ -56,5 +59,12 @@ public class Main {
         }
         System.out.println("..........................");
         System.out.println("Total Salary:"+Total_salary);
+
+    }
+    public static void main(String[] args) {
+
+        Main obj = new Main();
+        obj.employeeWageCalculation();
+
     }
 }
