@@ -3,13 +3,12 @@ public class Main {
     public static final int isPresent = 1;
     //public static final int isAbsent = 0;
     public static final int isPartTime = 2;
-    public static final int daily_wage_per_hour = 100;
+    //public static final int daily_wage_per_hour = 100;
     public static  final int max_hour_in_month = 100;
     public static final int working_day = 20;
 
-    public void employeeWageCalculation(){
-        System.out.println("Welcome To Employee Wage Computation Program");
-        System.out.println("............................................");
+    public void employeeWageCalculation(String employeeName, String companyName, int dailyWage){
+
         System.out.println(" ");
 
         //while loop vars
@@ -50,21 +49,25 @@ public class Main {
             }
             */
 
-            dailySalary = return_value*daily_wage_per_hour;
-            System.out.println("Daily Salary="+dailySalary);
+            dailySalary = return_value*dailyWage;
+            //System.out.println("Daily Salary="+dailySalary);
 
 
             Total_salary = Total_salary + dailySalary;
             total_working_days++;
         }
-        System.out.println("..........................");
-        System.out.println("Total Salary:"+Total_salary);
+        System.out.println("Employee Name : " + employeeName + "\n" + "Company Name : " + companyName);
+        System.out.println("........................");
+        System.out.println("Total Salary:" + Total_salary);
 
     }
     public static void main(String[] args) {
 
+        System.out.println("Welcome To Employee Wage Computation Program");
+        System.out.println("............................................");
         Main obj = new Main();
-        obj.employeeWageCalculation();
+        obj.employeeWageCalculation("ABC" , "Microsoft" , 1200);
+        obj.employeeWageCalculation("XYZ" , "Google" , 2000 );
 
     }
 }
