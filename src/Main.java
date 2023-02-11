@@ -1,11 +1,25 @@
-public class Main {
+interface EmpWage{
+    int isPresent = 1;
+    int isPartTime = 2;
 
-    public static final int isPresent = 1;
-    public static final int isPartTime = 2;
+    void employeeWageCalculation(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day);
 
+}
 
-    public void employeeWageCalculation(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day){
+public class Main implements EmpWage {
 
+    public static void main(String[] args) {
+
+        System.out.println("Welcome To Employee Wage Computation Program");
+        System.out.println("............................................");
+        Main obj = new Main();
+        obj.employeeWageCalculation("ABC" , "Microsoft" , 900, 65, 30);
+        obj.employeeWageCalculation("XYZ" , "Google" , 800, 80, 27 );
+
+    }
+
+    @Override
+    public void employeeWageCalculation(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day) {
         System.out.println(" ");
 
         //while loop vars
@@ -46,13 +60,6 @@ public class Main {
         System.out.println("Total Salary:" + Total_salary);
         System.out.println("........................");
     }
-    public static void main(String[] args) {
 
-        System.out.println("Welcome To Employee Wage Computation Program");
-        System.out.println("............................................");
-        Main obj = new Main();
-        obj.employeeWageCalculation("ABC" , "Microsoft" , 900, 65, 30);
-        obj.employeeWageCalculation("XYZ" , "Google" , 800, 80, 27 );
 
-    }
 }
