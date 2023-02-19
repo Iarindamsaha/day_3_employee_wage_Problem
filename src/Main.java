@@ -24,7 +24,9 @@ public class Main {
 class EmpService implements EmpWage{
 
     ArrayList<EmployeeStore> emp = new ArrayList<>();
+    ArrayList<DailyEmpSalary> empDailyWage = new ArrayList<>();
     EmployeeStore empStore;
+    DailyEmpSalary empDaily;
 
     @Override
     public void employeeWageCalculation(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day) {
@@ -59,6 +61,10 @@ class EmpService implements EmpWage{
             total_emp_hr=total_emp_hr+return_value;
 
             dailySalary = return_value*dailyWage;
+            empDaily = new DailyEmpSalary(dailySalary);
+            empDailyWage.add(empDaily);
+
+
 
             Total_salary = Total_salary + dailySalary;
             total_working_days++;
@@ -75,6 +81,15 @@ class EmpService implements EmpWage{
         for(int i = 0 ; i < emp.size(); i++){
             if(emp.get(i) != null ){
                 System.out.println(emp.get(i));
+                dailyWages();
+            }
+        }
+    }
+
+    public void dailyWages(){
+        for(int i = 0; i < empDailyWage.size(); i++){
+            if(empDailyWage.get(i) != null){
+                System.out.println(empDailyWage.get(i));
             }
         }
     }
@@ -98,6 +113,7 @@ class EmployeeStore{
         this.total_salary = total_salary;
     }
 
+
     @Override
     public String toString() {
         return "EmployeeStore{" +
@@ -107,6 +123,20 @@ class EmployeeStore{
                 ", max_hour_in_month=" + max_hour_in_month +
                 ", working_day=" + working_day +
                 ", total_salary=" + total_salary +
+                '}';
+    }
+}
+class DailyEmpSalary{
+    private int daily_salary;
+
+    public DailyEmpSalary(int daily_salary) {
+        this.daily_salary = daily_salary;
+    }
+
+    @Override
+    public String toString() {
+        return "DailyEmpSalary{" +
+                "daily_salary = " + daily_salary +
                 '}';
     }
 }
