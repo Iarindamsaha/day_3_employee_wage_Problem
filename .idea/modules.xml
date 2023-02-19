@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Day_3_Employee_Wage.iml" filepath="$PROJECT_DIR$/Day_3_Employee_Wage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_Employee_Wage_ALL.iml" filepath="$PROJECT_DIR$/_Employee_Wage_ALL.iml" />
     </modules>
   </component>
 </project>

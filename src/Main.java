@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 interface EmpWage{
     int isPresent = 1;
     int isPartTime = 2;
@@ -6,21 +8,26 @@ interface EmpWage{
 
 }
 
-public class Main implements EmpWage {
+public class Main {
 
     public static void main(String[] args) {
 
         System.out.println("Welcome To Employee Wage Computation Program");
         System.out.println("............................................");
-        Main obj = new Main();
-        obj.employeeWageCalculation("ABC" , "Microsoft" , 900, 65, 30);
-        obj.employeeWageCalculation("XYZ" , "Google" , 800, 80, 27 );
-
+        EmpService obj = new EmpService();
+        obj.employeeWageCalculation("ABC", "Microsoft", 900, 65, 30);
+        obj.employeeWageCalculation("XYZ", "Google", 800, 80, 27);
+        obj.displayAll();
     }
+}
+
+class EmpService implements EmpWage{
+
+    ArrayList<EmployeeStore> emp = new ArrayList<>();
+    EmployeeStore empStore;
 
     @Override
     public void employeeWageCalculation(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day) {
-        System.out.println(" ");
 
         //while loop vars
         int Total_salary=0;
@@ -56,10 +63,50 @@ public class Main implements EmpWage {
             Total_salary = Total_salary + dailySalary;
             total_working_days++;
         }
-        System.out.println("Employee Name : " + employeeName + "\n" + "Company Name : " + companyName);
-        System.out.println("Total Salary:" + Total_salary);
-        System.out.println("........................");
+        empStore = new EmployeeStore(employeeName,companyName,dailyWage,max_hour_in_month,working_day,Total_salary);
+        emp.add(empStore);
+
+        //System.out.println("Employee Name : " + employeeName + "\n" + "Company Name : " + companyName);
+        //System.out.println("Total Salary:" + Total_salary);
+        //System.out.println("........................");
+
+    }
+    public void displayAll(){
+        for(int i = 0 ; i < emp.size(); i++){
+            if(emp.get(i) != null ){
+                System.out.println(emp.get(i));
+            }
+        }
+    }
+}
+
+class EmployeeStore{
+    String employeeName;
+    String companyName;
+    int dailyWage;
+    int max_hour_in_month;
+    int working_day;
+
+    int total_salary;
+
+    public EmployeeStore(String employeeName, String companyName, int dailyWage, int max_hour_in_month, int working_day, int total_salary) {
+        this.employeeName = employeeName;
+        this.companyName = companyName;
+        this.dailyWage = dailyWage;
+        this.max_hour_in_month = max_hour_in_month;
+        this.working_day = working_day;
+        this.total_salary = total_salary;
     }
 
-
+    @Override
+    public String toString() {
+        return "EmployeeStore{" +
+                "employeeName='" + employeeName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", dailyWage=" + dailyWage +
+                ", max_hour_in_month=" + max_hour_in_month +
+                ", working_day=" + working_day +
+                ", total_salary=" + total_salary +
+                '}';
+    }
 }
