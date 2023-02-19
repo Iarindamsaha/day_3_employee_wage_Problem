@@ -15,9 +15,12 @@ public class Main {
         System.out.println("Welcome To Employee Wage Computation Program");
         System.out.println("............................................");
         EmpService obj = new EmpService();
-        obj.employeeWageCalculation("ABC", "Microsoft", 900, 65, 30);
-        obj.employeeWageCalculation("XYZ", "Google", 800, 80, 27);
+        obj.employeeWageCalculation("Pritam", "Microsoft", 900, 65, 30);
+        obj.employeeWageCalculation("Alex", "Google", 800, 80, 27);
+        obj.employeeWageCalculation("Robin","Facebook",700,78,26);
         obj.displayAll();
+        System.out.println("-----<><><><><><>-----");
+        obj.searchByCompanyName("microsoft");
     }
 }
 
@@ -81,7 +84,7 @@ class EmpService implements EmpWage{
         for(int i = 0 ; i < emp.size(); i++){
             if(emp.get(i) != null ){
                 System.out.println(emp.get(i));
-                dailyWages();
+                //dailyWages();
             }
         }
     }
@@ -89,7 +92,16 @@ class EmpService implements EmpWage{
     public void dailyWages(){
         for(int i = 0; i < empDailyWage.size(); i++){
             if(empDailyWage.get(i) != null){
+
                 System.out.println(empDailyWage.get(i));
+            }
+        }
+    }
+
+    public void searchByCompanyName(String userInput){
+        for (int i = 0; i < emp.size(); i++){
+            if(emp.get(i) != null && emp.get(i).getCompanyName().equalsIgnoreCase(userInput)){
+                System.out.println(emp.get(i));
             }
         }
     }
@@ -113,6 +125,9 @@ class EmployeeStore{
         this.total_salary = total_salary;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
 
     @Override
     public String toString() {
